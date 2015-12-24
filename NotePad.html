@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="favicon.ico">
+        <title>留言板</title>
+        <!-- Bootstrap core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link href="jumbotron.css" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></script>
+        <style>
+            input, textarea {
+                width:80%;
+                margin:5;
+                padding:5;
+            }
+            a {
+                color:blue;
+            }
+            body {
+                padding-top: 60px;
+                padding-bottom: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                         <span class="sr-only">Toggle navigation</span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                    </button>
+                     <a class="navbar-brand" href="#">留言板</a>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <form class="form-signin">
+                        <label for="text"></label>
+                        <input type="text" id="title" class="form-control" placeholder="留言" required autofocus>
+                        <textarea class="form-control" rows="5" id="text" placeholder="內文"></textarea>
+                        <br/>
+                        <div class="checkbox"></div>
+                        <button class="btn btn-lg btn-primary btn-block" onclick="save()">新增一則留言</button>
+
+                    </form>
+
+                    <div>
+                        <table id="list">
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+                <footer>
+                    <p>&copy; Company 2015</p>
+                </footer>
+            </div>
+
+            <hr>
+
+
+        </div>
+        <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        <script>
+            var oTitle = document.getElementById("title");
+            var oText = document.getElementById("text");
+            var oList = document.getElementById("list");
+
+            function save() {
+                var title = oTitle.value;
+                var text = oText.value;
+                window.localStorage.setItem("notepad:" + title, text);
+                showList();
+            }
+
+            function showList() {
+                var rowHtml = "";
+                for (var title in window.localStorage) {
+                    if (title.startsWith("notepad:")) {
+                        rowHtml += "<tr><td><a onclick=\"loadDoc('" + title + "')\">" + title.substring(8) + "</a></td></tr>"
+                    }
+                }
+                oList.innerHTML = rowHtml;
+            }
+
+            function loadDoc(title) {
+                oTitle.value = title.substring(8);
+                oText.value = window.localStorage.getItem(title);
+            }
+            showList();
+        </script>
+    </body>
+
+</html>
