@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<title>CLOCK</title>
+<html>
+<head>
+</head>
+<body>
+<div id="time"></div>
+<script>
+function showTime() {
+    var now=new Date();
+    var h=now.getHours();
+    var m=now.getMinutes();
+    var s=now.getSeconds();
+    var ms=now.getMilliseconds();
+    document.getElementById('time').innerHTML = h+":"+m+":"+s+":"+ms;
+    setTimeout(showTime,1);
+}
+
+showTime();
+</script>
+</body>
+</html>
