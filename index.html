@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script type="text/javascript">
+  <!-- 
+
+       function Show(User)
+       {
+          if (User==0)
+          {document.getElementById("Player").innerHTML="剪刀";}
+          else if (User==1)
+          {document.getElementById("Player").innerHTML="石頭";}
+          else
+          {document.getElementById("Player").innerHTML="布";}
+		  
+          var C = Math.floor(Math.random() * 3);
+          switch (C)
+          {case 0: document.getElementById("Computer").innerHTML="剪刀";  break;
+           case 1: document.getElementById("Computer").innerHTML="石頭";  break;
+           case 2: document.getElementById("Computer").innerHTML="布";  break;}
+
+          var different = User-C;
+          if (different==0)
+          {document.getElementById("Judge").innerHTML="平手";}
+          else if (different==1 || different==-2)
+          {document.getElementById("Judge").innerHTML="使用者獲勝";}
+          else 
+          {document.getElementById("Judge").innerHTML="電腦獲勝";}
+        }
+   -->
+  </script>
+
+</head>
+
+<body>
+  <h1 id="T">剪刀~~   石頭~~   布~~!</h1>
+
+  <img src="http://i.imgur.com/D5W5VRK.jpg?1" onClick="Show(0)"></img> 
+  <img src="http://i.imgur.com/sLrqsHo.jpg?1"  onClick="Show(1)"></img>
+  <img src="http://i.imgur.com/PPYhZrr.jpg?1"   onClick="Show(2)"></img>
+
+
+
+  <br>
+  使用者出：<span id="Player"></span>
+  <br>
+
+  電腦出： <span id="Computer"></span>
+
+<br><br>
+
+  最後結果為： <span id="Judge"></span><br>
+
+
+</body>
+</html> 
